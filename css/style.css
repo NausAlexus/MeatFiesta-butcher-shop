@@ -266,6 +266,7 @@ body::-webkit-scrollbar-track {
     flex: 1 1 45%;
     margin: 10px;
     position: relative;
+    overflow: hidden; /* Добавлено для обрезки изображения */
 }
 
 .single-block-meat {
@@ -280,8 +281,9 @@ body::-webkit-scrollbar-track {
 }
 
 .image-single-meat, .image-left-meat, .image-right-meat {
-    max-width: 100%;
-    height: auto;
+    width: 100%; /* Задать ширину 100% */
+    height: 100%; /* Задать высоту 100% */
+    object-fit: cover; /* Чтобы изображение заполнило блок, сохраняя пропорции */
 }
 
 .double-image-meat {
@@ -305,8 +307,15 @@ body::-webkit-scrollbar-track {
     padding: 20px;
 }
 
-.overlay-text {
+.overlay-text-meat {
     font-size: 2em;
+}
+
+@media (max-width: 1360px) {
+
+    .overlay-text-meat {
+        font-size: 1em;
+    }
 }
 
 @media (max-width: 768px) {
@@ -318,9 +327,6 @@ body::-webkit-scrollbar-track {
         flex: 1 1 100%;
     }
 
-    .overlay-text-meat {
-        font-size: 1.5em;
-    }
 }
 
 .production-section {
@@ -496,6 +502,10 @@ body::-webkit-scrollbar-track {
 .contact-section {
     padding: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-title {
@@ -559,6 +569,9 @@ body::-webkit-scrollbar-track {
 }
 
 @media (max-width: 768px) {
+    .map-block{
+        width: 100%;
+    }
     .contact-container {
         flex-direction: column;
     }
@@ -693,7 +706,7 @@ body::-webkit-scrollbar-track {
     padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 46px;
 }
 
 .terms-title {
@@ -732,6 +745,7 @@ body::-webkit-scrollbar-track {
     text-align: center;
     margin-bottom: 40px;
     margin-top: 90px;
+    padding: 20px;
 }
 
 .delivery-section h1 {
@@ -990,6 +1004,7 @@ body::-webkit-scrollbar-track {
     text-decoration: none;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    gap: 10px;
 }
 
 .vacancies-section {
@@ -1240,9 +1255,17 @@ body::-webkit-scrollbar-track {
     margin: 0 10px;
     max-width: 100%;
     height: auto;
-    flex: 1;
+    width: calc(33.33% - 20px);
     min-width: 150px;
 }
+
+@media (max-width: 768px) {
+    .image-row img {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
 
 @media (max-width: 600px) {
     .factory-info h2 {
@@ -1253,10 +1276,6 @@ body::-webkit-scrollbar-track {
         font-size: 1em;
     }
     
-    .image-row img {
-        max-width: 90%;
-        margin-bottom: 10px;
-    }
 }
 
 .assortment-section {
